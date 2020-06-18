@@ -26,7 +26,7 @@ ENV SHELL=/bin/bash \
 ENV HOME=/home/$NB_USER \
     PATH=$ANACONDA_HOME/bin:$HADOOP_PREFIX/bin:$JAVA_HOME/bin:$SPARK_HOME/bin:$PATH
 
-ENV SPARK_VER 2.4.1
+ENV SPARK_VER 2.4.5
 ENV HADOOP_VER 2.7.7
 
 # INSTALL / DOWNLOAD ALL NEEDED PACKAGES
@@ -116,7 +116,7 @@ USER $NB_UID
 
 RUN Rscript -e 'install.packages(c("IRkernel","versions"), repos="https://ftp.osuosl.org/pub/cran", lib="/opt/conda/lib/R/library")' \
             -e 'IRkernel::installspec(prefix = "/usr/local")' \
-            -e 'versions::install.versions("SparkR", "2.4.1", lib="/opt/conda/lib/R/library")' && \
+            -e 'versions::install.versions("SparkR", "2.4.5", lib="/opt/conda/lib/R/library")' && \
     fix-permissions $ANACONDA_HOME && \
     fix-permissions /home/$NB_USER
 
@@ -137,7 +137,7 @@ RUN cd /tmp && \
     curl -O https://dist.apache.org/repos/dist/release/incubator/toree/0.3.0-incubating/toree-pip/toree-0.3.0.tar.gz && \
     pip install --upgrade setuptools --user && \
     pip install /tmp/toree-0.3.0.tar.gz && \
-    jupyter toree install --spark_home=$SPARK_HOME --kernel_name="Spark 2.4.1" --interpreters=Scala && \
+    jupyter toree install --spark_home=$SPARK_HOME --kernel_name="Spark 2.4.5" --interpreters=Scala && \
     rm -f /tmp/toree-0.3.0.tar.gz && \
     fix-permissions $ANACONDA_HOME && \
     fix-permissions /home/$NB_USER
