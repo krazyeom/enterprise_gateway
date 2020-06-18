@@ -103,7 +103,6 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 USER root
 
 RUN conda install --yes --quiet \
-    'pip' \
     'jupyter' \
     'r-devtools' \
     'r-stringr' \
